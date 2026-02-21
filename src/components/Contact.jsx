@@ -78,7 +78,7 @@ export default function Contact() {
                 <FaPhoneAlt />
               </div>
               <span className="text-gray-700">
-                +1 234 567 890
+                +91 9876543210
               </span>
             </div>
 
@@ -96,7 +96,7 @@ export default function Contact() {
                 <FaMapMarkerAlt />
               </div>
               <span className="text-gray-700">
-                123 Green Street, New York
+                Kalyani Nagar, Pune - 411014
               </span>
             </div>
 

@@ -4,6 +4,7 @@ import { FaTag } from "react-icons/fa6";
 import { useNavigate, useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
+import toast from 'react-hot-toast';
 
 export default function ProductDetails() {
 
@@ -30,6 +31,13 @@ export default function ProductDetails() {
         fetchProductDetails()
     }, [])
 
+    const handleAddToCart = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        dispatch(addToCart({ ...productData, quantity }))
+        toast.success(productData.title + " Added to Cart ")
+    }
+
     const handleBuyNow = () => {
         dispatch(addToCart({ ...productData, quantity }))
         navigate('/cart')
@@ -55,7 +63,7 @@ export default function ProductDetails() {
                         <input type='number' className='border border-gray-300 w-20 px-4 py-2' min="1" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
                     </form>
                     <div className='flex gap-4 my-6'>
-                        <button className='px-6 py-2 bg-black text-white cursor-pointer' onClick={() => dispatch(addToCart({ ...productData, quantity }))}>Add to Cart</button>
+                        <button className='px-6 py-2 bg-black text-white cursor-pointer' onClick={(e) => handleAddToCart(e)}>Add to Cart</button>
                         <button className='px-6 py-2 bg-green-600 text-white cursor-pointer' onClick={() => handleBuyNow()}>Buy Now</button>
                     </div>
 

@@ -13,11 +13,10 @@ export default function Home() {
       <Hero />
       <WhyChooseUs />
       <TopRatedProducts />
-       <AboutUs />
+      <AboutUs />
       <HomepageCategories />
-      <Testimonials />
-      
-      <BlogList limit="3" showPagination={false} />
+      <Testimonials />      
+      <BlogList limit="3" showPagination={false} viewMoreBlogs={true} />
       
     </div>
   )

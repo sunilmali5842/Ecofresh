@@ -34,7 +34,7 @@ export default function CategoryDetail() {
 
     return (
         <>
-            <h2 className="text-3xl font-bold text-center my-12">
+            <h2 className="text-3xl font-bold text-center my-8 lg:my-12">
                 {loading ? (
                     <div className="h-8 w-64 mx-auto bg-gray-200 rounded animate-pulse"></div>
                 ) : (

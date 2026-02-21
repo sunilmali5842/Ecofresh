@@ -4,8 +4,10 @@ import { Link } from 'react-router'
 import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { FaRegUserCircle } from "react-icons/fa";
+import { useAuth } from "../components/context/AuthContext";
 
 export default function Header() {
+    const { user } = useAuth();
     const [menuOpen, setMenuOpen] = useState(false)
     const [sticky, setSticky] = useState(false)
     const cartItems = useSelector((store) => store.cart.items)
@@ -42,10 +44,21 @@ export default function Header() {
                             Contact
                         </Link>
                         <Link to="/cart" className='flex items-center gap-1'><FaShoppingCart />(<span>{totalCartItems}</span>)</Link>
-                        <Link to="/login" className=''><FaRegUserCircle /></Link>
+                        {user ? (
+                            <Link to="/profile">
+                                <div className="w-9 h-9 rounded-full bg-green-600 text-white flex items-center justify-center font-semibold uppercase hover:opacity-90 transition">
+                                    {user.email?.charAt(0)}
+                                </div>
+                            </Link>
+                        ) : (
+                            <Link to="/login">
+                                <FaRegUserCircle className="text-2xl text-gray-700 hover:text-green-600 transition" />
+                            </Link>
+                        )}
                     </nav>
 
-                    <div className="col-span-6 md:hidden flex justify-end items-center gap-10">
+                    <div className="col-span-6 md:hidden flex justify-end items-center gap-6">
+
                         <Link to="/cart" className="relative">
                             <FaShoppingCart className="text-xl" />
                             {totalCartItems > 0 && (
@@ -55,12 +68,25 @@ export default function Header() {
                             )}
                         </Link>
 
+                        {user ? (
+                            <Link to="/profile">
+                                <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-semibold uppercase">
+                                    {user.email?.charAt(0)}
+                                </div>
+                            </Link>
+                        ) : (
+                            <Link to="/login">
+                                <FaRegUserCircle className="text-xl text-gray-700" />
+                            </Link>
+                        )}
+
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
                             className="text-gray-800 text-2xl"
                         >
                             ☰
                         </button>
+
                     </div>
 
                 </div>

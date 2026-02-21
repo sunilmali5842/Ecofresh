@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../Pagination";
 import { Link } from "react-router";
 
-export default function BlogList({ limit = 9, showPagination = true }) {
+export default function BlogList({ limit = 9, showPagination = true, viewMoreBlogs = false }) {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
@@ -69,6 +69,16 @@ export default function BlogList({ limit = 9, showPagination = true }) {
                         </div>
                     ))}
                 </div>
+                {viewMoreBlogs && (
+                    <div className="text-center mt-8">
+                        <Link
+                            to="/blogs"
+                            className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition duration-300"
+                        >
+                            View More Blogs <span>→</span>
+                        </Link>
+                    </div>
+                )}
 
                 {
                     showPagination && <Pagination

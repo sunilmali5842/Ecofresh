@@ -124,7 +124,7 @@ export default function Cart() {
         {cartItems.map((product) => (
           <div
             key={product.id}
-            className="bg-white shadow-md rounded-xl p-4 flex gap-4"
+            className="bg-white shadow-[0_0_15px_rgba(0,0,0,0.08)] rounded-xl p-4 flex gap-4"
           >
             <img
               src={product.thumbnail}

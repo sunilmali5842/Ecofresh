@@ -8,6 +8,7 @@ export default function SidebarCategories() {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -33,19 +34,28 @@ export default function SidebarCategories() {
       {loading ? (
         <CategoriesSkeleton count={24} />
       ) : (
-        <div className="shadow-lg">
-          <h3 className="font-semibold bg-green-600 text-white p-2">
+        <div className="shadow-lg md:block">
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="w-full flex justify-between items-center font-semibold bg-gray-50 lg:bg-green-600 text-gray-800 lg:text-white p-2 border border-gray-100 md:cursor-default"
+          >
             Categories
-          </h3>
-          <ul className="p-4">
+            <span className="md:hidden">
+              {open ? "−" : "+"}
+            </span>
+          </button>
+
+          <ul className={`${open ? "block" : "hidden"} md:block p-4`}>
             {categories.map(category => (
               <li
                 key={category.slug}
-                className="border border-gray-300 p-2 my-2 hover:bg-gray-500 hover:text-white"
+                className="border border-gray-200 p-2 my-2 hover:bg-gray-100 transition"
               >
                 <Link
                   to={`/products/category/${category.slug}`}
                   className="flex items-center gap-2"
+                  onClick={() => setOpen(false)}
                 >
                   <FaAngleRight />
                   {category.name}
