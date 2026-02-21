@@ -92,7 +92,7 @@ export default function OrderSuccess() {
           <span>${order.totalAmount.toFixed(2)}</span>
         </div>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
             to="/products"
             className="flex-1 text-center bg-green-600 text-white py-3 rounded-lg"
