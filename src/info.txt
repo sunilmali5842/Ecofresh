@@ -1,0 +1,5 @@
+https://github.com/PradeepRai218/miniecom/blob/main/src/components/pages/Home.jsx
+https://wscubetech.co/ecommerce-api/products.php?limit=200
+https://wscubetech.co/ecommerce-api/categories.php
+https://dummyjson.com/products?limit=200
+https://dummyjson.com/products/category-list
